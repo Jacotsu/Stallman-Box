@@ -104,8 +104,10 @@ static bool MixStereoVorbisSamples(AudioSource *source,int32_t *samples,int nums
 	for(int i=0;i<numsamples;i++)
 	{
 		LoadNextFrameIfNeeded(self);
-		samples[2*i+0]+=self->currentframe[0][self->framepos]*leftscale;
-		samples[2*i+1]+=self->currentframe[1][self->framepos]*rightscale;
+		if (self->currentframe) {
+			samples[2*i+0]+=self->currentframe[0][self->framepos]*leftscale;
+			samples[2*i+1]+=self->currentframe[1][self->framepos]*rightscale;
+		}
 		self->framepos++;
 	}
 	return true;

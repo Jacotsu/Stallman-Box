@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall -O3 -ffast-math -std=gnu99 -lz -Iglew/include
+CFLAGS = -g -Wall -O0 -ffast-math -std=gnu99 -lz -Iglew/include
 PROG = stallmanbox
 
 SRCS = \
@@ -23,7 +23,7 @@ SRCS = \
 ifeq ($(shell uname),Darwin)
 	LIBS = -framework OpenGL -framework GLUT
 else
-	LIBS = -Lglew/lib -lglut -lGLEW -lSDL
+	LIBS = -Lglew/lib -lm -lGL -lGLEW -lglut -lSDL
 endif
 
 all: $(PROG)
